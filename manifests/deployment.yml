@@ -10,13 +10,13 @@ spec:
   selector:
     matchLabels:
       app: nginx
-    templates:
+  templates:
       metadata:
         labels:
           app: nginx
       spec:
-        conatainers:
+        containers:
           - name: nginx
             image: nginx:latest
             ports:
-              - conatinerPort: 80
+              - containerPort: 80
