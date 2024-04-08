@@ -60,7 +60,9 @@ pipeline {
         stage('Apply Service Account') {
             steps {
                 script {
-                    sh 'kubectl apply -f servie-account.yml'
+                    dir('manifest'){
+                         sh 'kubectl apply -f servie-account.yml'
+                    }                    
                 }
             }
         }
@@ -84,7 +86,9 @@ pipeline {
         stage('Apply YAML of Game App') {
             steps {
                 script {
-                    sh 'kubectl apply -f 2048_full.yaml'
+                    dir('manifest'){
+                         sh 'kubectl apply -f 2048_full.yaml'
+                    } 
                 }
             }
         }
