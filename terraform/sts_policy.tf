@@ -1,6 +1,6 @@
 resource "aws_iam_role_policy" "example_sts_policy" {
   name = "example-sts-policy"
-role = aws_iam_role.example_role.name
+  role = aws_iam_role.example_role.name
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
