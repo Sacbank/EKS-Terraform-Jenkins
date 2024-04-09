@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script {
                     dir('manifest'){
-                         sh 'kubectl apply -f servie-account.yml'
+                         sh 'kubectl apply -f service_account.yml'
                     }                    
                 }
             }
