@@ -4,10 +4,10 @@ metadata:
   name: nginx-app-service
 spec:
   ports:
-  - port: 31005
-    nodePort: 31001
-    targetPort: myappport
+  - port: 80  #this is a port number on which service will be available inside a cluster
+    nodePort: 31002  #this is a port number on which service will be available outside the cluster
+    targetPort: myappport #this is the port of pod where traffic will be forwarded
     protocol: TCP
-  selector:
-    app: nginx-app
+  selector: #to send the traffic of this service on the pod with below labels
+    app: nginx-app 
   type: NodePort
