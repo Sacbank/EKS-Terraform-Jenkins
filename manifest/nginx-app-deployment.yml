@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld-deployment
+  name: nginx-app-deployment
   labels:
-    app: helloworld
+    app: nginx-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: helloworld
+      app: nginx-app
   template:
     metadata:
       labels:
-        app: helloworld
+        app: nginx-app
     spec:
       containers:
-        - name: k8s-demo
+        - name: k8s-task
           image: nginx
           imagePullPolicy: IfNotPresent
           ports:
