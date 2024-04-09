@@ -83,11 +83,13 @@ pipeline {
             }
         }
         
-        stage('Apply YAML of Game App') {
+        stage('Deploy Nginx App') {
             steps {
                 script {
                     dir('manifest'){
-                         sh 'kubectl apply -f 2048_full.yaml'
+                         sh 'kubectl apply -f nginx-app-deployment.yml'
+                         sh 'kubectl apply -f nginx-app-service.yaml'
+                         sh 'kubectl apply -f nginx-app-ingress-alb.yaml'
                     } 
                 }
             }
