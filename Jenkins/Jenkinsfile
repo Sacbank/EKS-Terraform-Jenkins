@@ -82,6 +82,13 @@ pipeline {
                 }
             }
         }
+        stage('Update AWS Load Balancer Controller') {
+            steps {
+                script {
+					sh 'kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"'
+                }
+            }
+        }        
         
         stage('Deploy Nginx App') {
             steps {
