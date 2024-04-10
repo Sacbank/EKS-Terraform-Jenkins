@@ -88,7 +88,9 @@ pipeline {
                 script {
                     dir('manifest'){
                          sh 'kubectl apply -f nginx-app-deployment.yml'
+                         sleep(time:60, unit: "SECONDS")
                          sh 'kubectl apply -f nginx-app-service.yaml'
+                         sleep(time:60, unit: "SECONDS")
                          sh 'kubectl apply -f nginx-app-ingress-alb.yaml'
                     } 
                 }
