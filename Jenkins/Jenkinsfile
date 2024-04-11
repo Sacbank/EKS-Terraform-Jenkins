@@ -1,8 +1,6 @@
 pipeline {
     agent any
     environment {
-        // AWS_ACCESS_KEY_ID = credentials('AWS_ACESS_KEY_ID')
-        // AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACESS_KEY')
         AWS_DEFAULT_REGION = 'us-east-1'
     }
     stages{
@@ -87,11 +85,12 @@ pipeline {
             steps {
                 script {
                     dir('manifest'){
-                         sh 'kubectl apply -f nginx-app-deployment.yml'
+                         sh 'kubectl create namespace my-namespace'
+                         sh 'kubectl apply -f nginx-app-deployment.yml -n my-namespace'
                          sleep(time:60, unit: "SECONDS")
-                         sh 'kubectl apply -f nginx-app-service.yaml'
+                         sh 'kubectl apply -f nginx-app-service.yaml -n my-namespace'
                          sleep(time:60, unit: "SECONDS")
-                         sh 'kubectl apply -f nginx-app-ingress-alb.yaml'
+                         sh 'kubectl apply -f nginx-app-ingress-alb.yaml -n my-namespace'
                     } 
                 }
             }
