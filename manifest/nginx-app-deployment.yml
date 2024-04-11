@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: k8s-task
-          image: httpd:latest
-          # imagePullPolicy: IfNotPresent
+          image: nginx
+          imagePullPolicy: IfNotPresent
           ports:
             - name: myappport
               containerPort: 80

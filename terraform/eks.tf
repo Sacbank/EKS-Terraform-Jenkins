@@ -22,12 +22,12 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.intra_subnets
 
   # EKS Managed Node Group(s)
-  eks_managed_node_group_defaults = {
-    ami_type       = "AL2_x86_64"
-    instance_types = ["t3.medium"]
-    vpc_security_group_ids = [aws_security_group.node_instance_sg.id]
-    # attach_cluster_primary_security_group = true
-  }
+  # eks_managed_node_group_defaults = {
+  #   ami_type       = "AL2_x86_64"
+  #   instance_types = ["t3.medium"]
+  #   vpc_security_group_ids = [aws_security_group.node_instance_sg.id]
+  #   # attach_cluster_primary_security_group = true
+  # }
 
   eks_managed_node_groups = {
     amc-cluster-wg = {
@@ -37,7 +37,7 @@ module "eks" {
 
       instance_types = ["t3.medium"]
       capacity_type  = "SPOT" #ON_DEMAND
-      
+      vpc_security_group_ids = [aws_security_group.node_instance_sg.id]
 
       tags = {
         ExtraTag = "helloworld"
