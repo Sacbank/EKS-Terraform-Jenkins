@@ -87,12 +87,11 @@ pipeline {
             steps {
                 script {
                     dir('manifest'){
-                         sh 'kubectl create namespace my-namespace'
-                         sh 'kubectl apply -f nginx-app-deployment.yml -n my-namespace'
+                         sh 'kubectl apply -f nginx-app-deployment.yml'
                          sleep(time:60, unit: "SECONDS")
-                         sh 'kubectl apply -f nginx-app-service.yaml -n my-namespace'
+                         sh 'kubectl apply -f nginx-app-service.yaml'
                          sleep(time:60, unit: "SECONDS")
-                         sh 'kubectl apply -f nginx-app-ingress-alb.yaml -n my-namespace'
+                         sh 'kubectl apply -f nginx-app-ingress-alb.yaml'
                     } 
                 }
             }
