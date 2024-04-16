@@ -15,9 +15,11 @@ spec:
         app: nginx-app
     spec:
       containers:
-        - name: k8s-task
-          image: nginx
-          imagePullPolicy: IfNotPresent
+        # - name: k8s-task
+        #   image: nginx
+        - name: tomcat-container-nautilus
+          image: gcr.io/kodekloud/centos-ssh-enabled:tomcat
+          #imagePullPolicy: IfNotPresent
           ports:
             - name: myappport
               containerPort: 80
